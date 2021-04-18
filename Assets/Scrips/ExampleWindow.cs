@@ -23,6 +23,11 @@ public class ExampleWindow : EditorWindow
         {
             Coloreador();
         }
+
+        if (GUILayout.Button("RESET"))
+        {
+            Reset();
+        }
     }
 
     void Coloreador()
@@ -36,5 +41,16 @@ public class ExampleWindow : EditorWindow
             }
         }
     }
-
+     
+    public void Reset()
+    {
+        foreach (GameObject obj in Selection.gameObjects)
+        {
+            Renderer renderer = obj.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.sharedMaterial.color = Color.white;
+            }
+        }
+    }
 }
